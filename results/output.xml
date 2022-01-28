@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.1 on win32)" generated="20220128 17:22:41.089" rpa="false" schemaversion="2">
+<suite id="s1" name="Personagens" source="C:\Projetos\Teste-API-Fake-Marvel-com-Robot-Framework\specs\personagens.robot">
+<test id="s1-t1" name="Deve buscar todos os personagens">
+<kw name="Setar client_key" library="base" type="SETUP">
+<arg>jaqueline@hotmail.com</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{usuario}</var>
+<arg>email=${email}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220128 17:22:41.226" level="INFO">&amp;{usuario} = { email=jaqueline@hotmail.com }</msg>
+<status status="PASS" starttime="20220128 17:22:41.226" endtime="20220128 17:22:41.226"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resposta}</var>
+<arg>${baseURL}/accounts</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>json=${usuario}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220128 17:22:41.228" level="FAIL">Variable '${HEADERS}' not found.</msg>
+<status status="FAIL" starttime="20220128 17:22:41.226" endtime="20220128 17:22:41.228"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${client_key}</var>
+<arg>${response.json()}[client_key]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220128 17:22:41.228" endtime="20220128 17:22:41.228"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{HEADERS}</var>
+<arg>client_key=${client_key}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20220128 17:22:41.228" endtime="20220128 17:22:41.228"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>&amp;{HEADERS}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220128 17:22:41.228" endtime="20220128 17:22:41.228"/>
+</kw>
+<status status="FAIL" starttime="20220128 17:22:41.225" endtime="20220128 17:22:41.230"/>
+</kw>
+<status status="FAIL" starttime="20220128 17:22:41.225" endtime="20220128 17:22:41.231">Setup failed:
+Variable '${HEADERS}' not found.</status>
+</test>
+<doc>Teste da API Fak da Marvel</doc>
+<status status="FAIL" starttime="20220128 17:22:41.091" endtime="20220128 17:22:41.233"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Personagens">Personagens</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
